@@ -1,25 +1,11 @@
 # Oovart’s Planet Shop at the End of the Universe
 
+## Overview
+
 Oovart’s Planet Shop at the End of the Universe is a fully functional Ruby on Rails application. 
 
 Visual graphics are currently not included in this application. 
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Make sure you have Ruby 2.2.3 or later, and Rails installed locally. After you download or `git clone` this repository, run `bundle install` and `rails s` in your command line interface, then navigate to `http://localhost:3000` to see the app in action.
