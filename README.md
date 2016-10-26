@@ -2,7 +2,7 @@
 
 ## Overview
 
-Oovart’s Planet Shop at the End of the Universe is a fully functional Ruby on Rails application. 
+Oovart’s Planet Shop at the End of the Universe is a fully functional Ruby on Rails application. Users can create accounts and create new planets with various features and inhabitants.
 
 Visual graphics are currently not included in this application. 
 
