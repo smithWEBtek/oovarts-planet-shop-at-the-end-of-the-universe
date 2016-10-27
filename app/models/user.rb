@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   has_many :planets
 
   validates :name, :email, presence: true
+  validates :name, uniqueness: true, length: { maximum: 20 }
 end
