@@ -1,2 +1,5 @@
-<h1>Features#show</h1>
-<p>Find me in app/views/features/show.html.erb</p>
+<h1><%= @feature.name %></h1>
+
+<%= image_tag @feature.name.parameterize, :height=> "400" %>
+
+<p><%= @feature.description %></p>
