@@ -3,8 +3,8 @@
 		<th>ID</th>
 		<th>Feature</th>
 		<th>Planet</th>
-		<th>Size</th>
-		<th>Price</th>
+		<th>Size (fy sq.)</th>
+		<th>Price (Pu)</th>
 		<th>Customer</th>
 		<th>Customer Email</th>
 	</tr>
@@ -12,10 +12,10 @@
 		<tr>
 			<td><%= order.id %></td>
 			<td><%= order.feature.name %></td>
-			<td><%= order.planet.name %></td>
+			<td><%= link_to order.planet.name, planet_path(order.planet) %></td>
 			<td><%= order.size %></td>
-			<td><%= order.price %></td>
-			<td><%= order.planet.user.name %></td>
+			<td><%= order.price * 1000 %></td>
+			<td><%= link_to order.planet.user.name, user_path(order.planet.user) %></td>
 			<td><%= order.planet.user.email %></td>
 		</tr>
 	<% end %>
