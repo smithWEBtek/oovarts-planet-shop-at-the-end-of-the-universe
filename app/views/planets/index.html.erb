@@ -1,8 +1,14 @@
-<h1>Planets#index</h1>
-<p>Find me in app/views/planets/index.html.erb</p>
-
-<ul>
+<table>
+	<tr>
+		<th>Planet</th>
+		<th>Owner</th>
+		<th>Price</th>
+	</tr>
 	<% @planets.each do |planet| %>
-		<li><%= link_to planet.name, planet_path(planet) %></li>
+		<tr>
+			<td><%= link_to planet.name, planet_path(planet) %></td>
+			<td><%= planet.user.name %></td>
+			<td><%= planet.price * 1000 %></td>
+		</tr>
 	<% end %>	
-</ul>
+</table>
