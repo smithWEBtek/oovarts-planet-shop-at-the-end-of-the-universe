@@ -3,5 +3,5 @@ class Feature < ActiveRecord::Base
 	has_many :planets, through: :orders
 
 	validates :name, presence: true
-	validates :description, length: { maximum: 250 }
+	validates :description, length: { maximum: 1000 }
 end
