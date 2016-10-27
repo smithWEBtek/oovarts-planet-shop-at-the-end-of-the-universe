@@ -1,2 +1,22 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Feature</th>
+		<th>Planet</th>
+		<th>Size</th>
+		<th>Price</th>
+		<th>Customer</th>
+		<th>Customer Email</th>
+	</tr>
+	<% @orders.each do |order| %>
+		<tr>
+			<td><%= order.id %></td>
+			<td><%= order.feature.name %></td>
+			<td><%= order.planet.name %></td>
+			<td><%= order.size %></td>
+			<td><%= order.price %></td>
+			<td><%= order.planet.user.name %></td>
+			<td><%= order.planet.user.email %></td>
+		</tr>
+	<% end %>
+</table>
