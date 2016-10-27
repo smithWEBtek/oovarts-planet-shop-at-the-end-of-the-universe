@@ -46,8 +46,8 @@ Feature.create([
 # orders
 
 id_counter = 1
-10.times do
-	rand(8..20).times do
+35.times do
+	rand(5..20).times do
 		Order.create(price: rand(1000000..8000000), size: rand(50..8000000), feature_id: rand(1..11), planet_id: id_counter)
 	end
 	id_counter += 1
