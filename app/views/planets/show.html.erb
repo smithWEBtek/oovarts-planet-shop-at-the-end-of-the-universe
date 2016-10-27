@@ -5,8 +5,15 @@
 <h2>Moons: <%= @planet.moons %></h2>
 
 <h2>Features:</h2>
-<ul>
-	<% @planet.features.each do |feature| %>
-		<li><%= link_to feature.name, feature_path(feature) %></li>
+<table>
+	<tr>
+		<th>Feature</th>
+		<th>Size (fy sq.)</th>
+	</tr>
+	<% @planet.orders.each do |order| %>
+		<tr>
+			<td><%= link_to order.feature.name, feature_path(order.feature) %></td>
+			<td><%= order.size %></td>
+		</tr>
 	<% end %>
-</ul>
+</table>
