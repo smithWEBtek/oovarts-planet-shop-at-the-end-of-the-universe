@@ -1,0 +1,8 @@
+<h1><%= @user.name %></h1>
+
+<h2>Planets:</h2>
+<ul>
+	<% @user.planets.each do |planet| %>
+		<li><%= link_to planet.name, planet_path(planet) %></li>
+	<% end %>
+</ul>
