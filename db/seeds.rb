@@ -36,6 +36,7 @@ Feature.create([
 	{name: 'Desert', description: 'A desert is a barren area of land where little precipitation occurs and consequently living conditions are hostile for plant and animal life. The lack of vegetation exposes the unprotected surface of the ground to the processes of denudation. Deserts can be classified by the amount of precipitation that falls, by the temperature that prevails, by the causes of desertification or by their geographical location.'},
 	{name: 'Fjord', description: 'Geologically, a fjord or fiord is a long, narrow inlet with steep sides or cliffs, created by glacial erosion.'},
 	{name: 'Forest', description: 'A forest is a large area dominated by trees. Hundreds of more precise definitions of forest are used throughout the world, incorporating factors such as tree density, tree height, land use, legal standing and ecological function.'},
+	{name: 'Glacier', description: 'A glacier is a persistent body of dense ice that is constantly moving under its own weight; it forms where the accumulation of snow exceeds its ablation (melting and sublimation) over many years, often centuries. Glaciers slowly deform and flow due to stresses induced by their weight, creating crevasses, seracs, and other distinguishing features. They also abrade rock and debris from their substrate to create landforms such as cirques and moraines. Glaciers form only on land and are distinct from the much thinner sea ice and lake ice that form on the surface of bodies of water.'},
 	{name: 'Lake', description: 'A lake is an area of variable size filled with water, localized in a basin, that is surrounded by land, apart from any river or other outlet that serves to feed or drain the lake. Lakes lie on land and are not part of the ocean, and therefore are distinct from lagoons, and are also larger and deeper than ponds, though there are no official or scientific definitions. Lakes can be contrasted with rivers or streams, which are usually flowing. Most lakes are fed and drained by rivers and streams.'},
 	{name: 'Mountain', description: 'A mountain is a large landform that stretches above the surrounding land in a limited area, usually in the form of a peak. A mountain is generally steeper than a hill. Mountains are formed through tectonic forces or volcanism. These forces can locally raise the surface of the planet. Mountains erode slowly through the action of rivers, weather conditions, and glaciers.'},
 	{name: 'Ocean', description: 'An ocean is a body of saline water. On Earth, an ocean is one of the major conventional divisions of the World Ocean, which covers almost 71% of its surface. The word sea is often used interchangeably with "ocean" in American English but, strictly speaking, a sea is a body of saline water (generally a division of the world ocean) partly or fully enclosed by land.'},
@@ -49,7 +50,7 @@ Feature.create([
 id_counter = 1
 35.times do
 	rand(5..20).times do
-		Order.create(price: rand(1000000..8000000), size: rand(50..8000000), feature_id: rand(1..12), planet_id: id_counter)
+		Order.create(price: rand(1000000..8000000), size: rand(50..8000000), feature_id: rand(1..13), planet_id: id_counter)
 	end
 	id_counter += 1
 end
