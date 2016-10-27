@@ -11,7 +11,7 @@
 User.create([
 	{ name: 'Heidi', email: 'heidi@gmail.com', password: 'rainbows' },
 	{ name: 'Sasha', email: 'sasha@gmail.com', password: 'momomomo'},
-	{ name: 'Abdul', email: 'abdul@gmail.com', password: 'fire'},
+	{ name: 'Abdul', email: 'abdul@gmail.com', password: 'houseisonfire'},
 	{ name: 'Chan', email: 'chan@gmail.com', password: 'meowmeow'},
 	{ name: 'Karla', email: 'karla@gmail.com', password: 'funfunfun'}
 ])
