@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20161027032110) do
 
   create_table "planets", force: :cascade do |t|
     t.string   "name"
+    t.integer  "price"
     t.integer  "population"
     t.integer  "moons"
     t.integer  "user_id"

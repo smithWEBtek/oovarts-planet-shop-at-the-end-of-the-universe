@@ -9,11 +9,11 @@
 # users
 
 User.create([
-	{ name: 'Heidi', email: 'heidi@gmail.com', password: 'rainbows' },
-	{ name: 'Sasha', email: 'sasha@gmail.com', password: 'momomomo'},
-	{ name: 'Abdul', email: 'abdul@gmail.com', password: 'houseisonfire'},
-	{ name: 'Chan', email: 'chan@gmail.com', password: 'meowmeow'},
-	{ name: 'Karla', email: 'karla@gmail.com', password: 'funfunfun'}
+	{ name: 'Miotmilt', email: 'miotmilt@gmail.com', password: 'rainbows' },
+	{ name: 'Tylsag', email: 'tylsag@gmail.com', password: 'momomomo'},
+	{ name: 'Elsyon', email: 'elsyon@gmail.com', password: 'houseisonfire'},
+	{ name: 'Ying', email: 'ying@gmail.com', password: 'meowmeow'},
+	{ name: 'Ivehie', email: 'ivehie@gmail.com', password: 'funfunfun'}
 ])
 
 # planets
@@ -23,7 +23,7 @@ name_counter = 0
 	planet_names = ['Shyweed', 'Ucrari', 'Enzel', 'Chonjer', 'Darr', 'Oodrore', 'Lari', 'Wykits', 'Tynthari', 'Eriodra', 'Thoffini', 'Kofula', 'Tinimimi', 'Inke', 'Erphaymmarl', 'Vrisox', 'Loolsula', 'Laputa', 'Zula', 'Krertfox', 'Shiorgrer', 'Groophap', 'Umunt', 'Sife', 'Queelfrid', 'Ivag', 'Alophus', 'Shaske', 'Oonkaiteet', 'Lyxore', 'Bolsar', 'Chucti', 'Clymby', 'Uvie', 'Zeectyon']
 
 	35.times do
-		Planet.create(name: planet_names[name_counter], population: rand(5000..8000000), moons: rand(8), user_id: rand(1..5))
+		Planet.create(name: planet_names[name_counter], price: rand(1000000..8000000), population: rand(5000..8000000), moons: rand(8), user_id: rand(1..5))
 		name_counter += 1
 	end
 
