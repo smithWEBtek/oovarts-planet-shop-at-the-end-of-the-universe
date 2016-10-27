@@ -4,10 +4,10 @@ class PlanetsController < ApplicationController
   end
 
   def show
-    @planet = Planet.find(params[:id])
   end
 
   def new
+    @planet = Planet.new
   end
 
   def create
@@ -20,5 +20,15 @@ class PlanetsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def planet_params
+    params.require(:planet).permit(:id, :name, :price, :population, :moons)
+  end
+
+  def find_planet
+    @planet = Planet.find(params[:id])
   end
 end
