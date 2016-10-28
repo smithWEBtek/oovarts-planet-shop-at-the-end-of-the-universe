@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+h1.logo {
+	text-align: center;
+	background-color: black;
+	color: #EBD9FA;
+	margin-bottom: 1em;
+	padding: 1.5em;
+}
