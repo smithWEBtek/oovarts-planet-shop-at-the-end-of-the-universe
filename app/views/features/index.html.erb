@@ -1,9 +1,11 @@
-<h1>Available Features in Stock</h1>
-
-<ul>
-	<% @features.each do |feature| %>
-		<tr>
-			<li><%= link_to feature.name, feature_path(feature) %></li>
-		</tr>
-	<% end %>
-</ul>
+<div class="jumbotron">
+	<h1>Available Features</h1>
+	
+	<ul class="list-group">
+		<% @features.each do |feature| %>
+			<tr>
+				<li class="list-group-item"><%= link_to feature.name, feature_path(feature) %></li>
+			</tr>
+		<% end %>
+	</ul>
+</div>
