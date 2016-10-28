@@ -1,4 +1,6 @@
 class PlanetsController < ApplicationController
+  before_action :find_planet, except: [:index, :new, :create]
+
   def index
     @planets = Planet.all
     @most_populated = Planet.most_populated
@@ -7,7 +9,6 @@ class PlanetsController < ApplicationController
   end
 
   def show
-    @planet = Planet.find(params[:id])
   end
 
   def new
@@ -40,6 +41,10 @@ class PlanetsController < ApplicationController
 
   def planet_params
     params.require(:planet).permit(:id, :name, :price, :population, :moons)
+  end
+
+  def find_planet
+    @planet = Planet.find(params[:id])
   end
 
 end
