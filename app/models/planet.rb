@@ -7,6 +7,8 @@ class Planet < ActiveRecord::Base
 	validates :moons, length: { maximum: 8 }
 	validates :population, length: { maximum: 8000000 }
 
+	accepts_nested_attributes_for :features
+
 	def self.most_populated
 		order('population desc').first
 	end
@@ -17,5 +19,12 @@ class Planet < ActiveRecord::Base
 
 	def self.most_expensive
 		order('price desc').first
+	end
+
+	def features_attributes=(attributes)
+		attributes.values.each do |attr|
+			feature = Feature.find_or_create_by(attr)
+			self.orders.build(feature_id: feature.id)
+		end
 	end
 end

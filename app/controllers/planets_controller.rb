@@ -13,19 +13,20 @@ class PlanetsController < ApplicationController
 
   def new
     @planet = Planet.new
+    @orders = @planet.orders.build
+    @feature = @orders.build_feature
   end
 
   def create
+    # raise params.inspect
     @planet = Planet.new(planet_params)
     @planet.price = rand(1000000..8000000)
-    if !@planet.valid?
-      render :new
-    # elsif existing_planet = Planet.find_by(name: params[:planet][:name])
-    #   redirect_to planet_path(existing_planet)
-    else
+    # if !@planet.valid?
+    #   render :new
+    # else
       @planet.save
       redirect_to planets_path
-    end
+    # end
   end
 
   def edit
@@ -40,7 +41,7 @@ class PlanetsController < ApplicationController
   private
 
   def planet_params
-    params.require(:planet).permit(:id, :name, :price, :population, :moons)
+    params.require(:planet).permit(:id, :name, :price, :population, :moons, orders_attributes: [:id, :size, feature_attributes: [:id, :name, :description]])
   end
 
   def find_planet

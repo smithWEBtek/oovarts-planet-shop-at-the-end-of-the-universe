@@ -4,19 +4,36 @@
 
 	<div class="form-group">
 		<%= f.label :name %>
-    <%= f.text_field :name, :class => "form-control" %>
+    <%= f.text_field :name, class: "form-control" %>
 	</div>
 
 	<div class="form-group">
 		<%= f.label :population %> (in thousands, max. 8,000,000,000)
-    <%= f.number_field :population, :class => "form-control" %>
+    <%= f.number_field :population, class: "form-control" %>
 	</div>
 
 	<div class="form-group">
 		<%= f.label :moons %> (max. 8)
-    <%= f.number_field :moons, :class => "form-control" %>
+    <%= f.number_field :moons, class: "form-control" %>
 	</div>
 
-	<%= f.submit 'Order Planet', :class => "btn btn-default", data: { confirm: "Are you sure?" } %>
+	<div class="form-group">
+		<%= f.fields_for :orders do |ff| %>
+			<h2>Add Customer Feature</h2>
+
+			<%= ff.label :size %>
+			<%= ff.number_field :size, class: "form-control" %>
+
+	    <%= ff.fields_for :feature do |fff| %>
+	      <%= fff.label :name %>
+	      <%= fff.text_field :name, class: "form-control" %>
+
+	      <%= fff.label :description %>
+	      <%= fff.text_area :description, class: "form-control" %>
+	    <% end %>
+    <% end %>
+	</div>
+
+	<%= f.submit 'Order Planet', class: "btn btn-default" %>
 
 <% end %>
