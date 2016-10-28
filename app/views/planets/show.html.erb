@@ -1,12 +1,16 @@
-<h1>Welcome to <%= @planet.name %></h1>
-<h2>Owner: <%= @planet.user.name %></h2>
+<div class="jumbotron">
+	<h1>Welcome to <%= @planet.name %></h1>
 
-<h2>Population: <%= @planet.population * 1000 %></h2>
-<h2>Moons: <%= @planet.moons %></h2>
-<h2>Price: <%= @planet.price * 1000 %> Pu</h2>
+	<ul class="list-group">
+		<li class="list-group-item">Owner: <%= @planet.user.name %></li>
+		<li class="list-group-item">Population: <%= @planet.population * 1000 %></li>
+		<li class="list-group-item">Moons: <%= @planet.moons %></li>
+		<li class="list-group-item">Price: <%= @planet.price * 1000 %> Pu</li>
+	</ul>
+</div>
 
 <h2>Features:</h2>
-<table>
+<table class="table">
 	<tr>
 		<th>Feature</th>
 		<th>Size (fy sq.)</th>
