@@ -2,7 +2,7 @@
 	<div class="col-md-6">
 		<h4>Most Populated Planet Award:</h4>
 		<p class="lead"><%= link_to @most_populated.name, planet_path(@most_populated) %></p>
-		<p>Population: <%= @most_populated.population %></p>
+		<p>Population: <%= @most_populated.population * 1000 %></p>
 		<p>Owner: <%= link_to @most_populated.user.name %></p><br>
 
 		<h4>Most Moons Planet Award:</h4>

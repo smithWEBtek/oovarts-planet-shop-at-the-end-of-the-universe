@@ -1,7 +1,7 @@
 <h1>Welcome to <%= @planet.name %></h1>
 <h2>Owner: <%= @planet.user.name %></h2>
 
-<h2>Population: <%= @planet.population %></h2>
+<h2>Population: <%= @planet.population * 1000 %></h2>
 <h2>Moons: <%= @planet.moons %></h2>
 <h2>Price: <%= @planet.price * 1000 %> Pu</h2>
 
