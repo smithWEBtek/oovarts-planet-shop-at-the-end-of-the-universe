@@ -3,9 +3,6 @@ class OrdersController < ApplicationController
     @orders = Order.all
   end
 
-  def show
-  end
-
   def new
   end
 

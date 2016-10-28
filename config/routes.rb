@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :planets
 
-  resources :orders, only: [:index, :show, :new, :create]
+  resources :orders, only: [:index, :new, :create]
 
   resources :features, only: [:index, :show, :new, :create]
   # The priority is based upon order of creation: first created -> highest priority.
