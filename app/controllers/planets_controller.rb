@@ -1,6 +1,9 @@
 class PlanetsController < ApplicationController
   def index
     @planets = Planet.all
+    @most_populated = Planet.most_populated
+    @most_moons = Planet.most_moons
+    @most_expensive = Planet.most_expensive
   end
 
   def show
@@ -29,7 +32,4 @@ class PlanetsController < ApplicationController
     params.require(:planet).permit(:id, :name, :price, :population, :moons)
   end
 
-  def find_planet
-    @planet = Planet.find(params[:id])
-  end
 end
