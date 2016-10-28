@@ -1,6 +1,6 @@
 <h1>Customer List</h1>
 
-<table>
+<table class="table">
 	<tr>
 		<th>ID</th>
 		<th>Name</th>
@@ -10,7 +10,7 @@
 	<% @users.each do |user| %>
 		<tr>
 			<td><%= user.id %></td>
-			<td><%= user.name.titleize %></td>
+			<td><%= link_to user.name.titleize, user_path(user) %></td>
 			<td><%= user.email %></td>
 			<td><%= user.planets.count %></td>
 		</tr>
