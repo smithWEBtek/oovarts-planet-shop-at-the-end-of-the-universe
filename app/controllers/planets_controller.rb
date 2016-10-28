@@ -15,6 +15,16 @@ class PlanetsController < ApplicationController
   end
 
   def create
+    @planet = Planet.new(planet_params)
+    if !@planet.valid?
+      render :new
+    # elsif existing_planet = Planet.find_by(name: params[:planet][:name])
+    #   redirect_to planet_path(existing_planet)
+    else
+      @planet.price = rand(1000000..8000000)
+      @planet.save
+      redirect_to planets_path
+    end
   end
 
   def edit
