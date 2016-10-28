@@ -1,14 +1,28 @@
-<table>
-	<tr>
-		<th>Planet</th>
-		<th>Owner</th>
-		<th>Price</th>
-	</tr>
-	<% @planets.each do |planet| %>
-		<tr>
-			<td><%= link_to planet.name, planet_path(planet) %></td>
-			<td><%= planet.user.name %></td>
-			<td><%= planet.price * 1000 %></td>
-		</tr>
-	<% end %>	
-</table>
+<div class="row">
+	<div class="col-md-6">
+		<h5>Most Populated Planet Award:</h5>
+		<p class="lead"><%= Planet.most_populated %></p>
+		<h5>Most Moons Planet Award:</h5>
+		<p class="lead"><%= Planet.most_moons %></p>
+		<h5>Most Expensive Planet Award:</h5>
+		<p class="lead"><%= Planet.most_expensive %></p>
+	</div>
+	<div class="col-md-6">
+		<table class="table">
+			<tr>
+				<th>Planet</th>
+				<th>Owner</th>
+				<th>Price</th>
+			</tr>
+			<% @planets.each do |planet| %>
+				<tr>
+					<td><%= link_to planet.name, planet_path(planet) %></td>
+					<td><%= planet.user.name %></td>
+					<td><%= planet.price * 1000 %></td>
+				</tr>
+			<% end %>	
+		</table>
+	</div>
+</div>
+
+
