@@ -8,14 +8,14 @@ class Planet < ActiveRecord::Base
 	validates :population, length: { maximum: 8000000 }
 
 	def self.most_populated
-		order('population desc').limit(1).pluck(:name).join
+		order('population desc').first
 	end
 
 	def self.most_moons
-		order('moons desc').limit(1).pluck(:name).join
+		order('moons desc').first
 	end
 
 	def self.most_expensive
-		order('price desc').limit(1).pluck(:name).join
+		order('price desc').first
 	end
 end
