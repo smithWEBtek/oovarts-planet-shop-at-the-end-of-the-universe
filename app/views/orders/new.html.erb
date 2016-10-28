@@ -1,3 +1,24 @@
 <h1>Order a New Feature</h1>
 
-<%= render partial: "form", locals: {order: @order} %>
+<%= form_for @order do |f| %>
+
+	<% f.hidden_field :price %>
+
+	<div class="form-group">
+		<%= f.label 'Choose a Planet' %>
+    <%= f.collection_select :planet, Planet.all, :id, :name, :class => "form-control" %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label 'Choose a feature', :class => "form-check-inline" %>
+    <%= f.collection_check_boxes :feature_ids, Feature.all, :id, :name, :class => "form-check-input"%>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :size %> (in fy sq., max. 8,000,000)
+    <%= f.number_field :size, :class => "form-control" %>
+	</div>
+
+	<%= f.submit 'Order Planet', :class => "btn btn-default", data: { confirm: "Are you sure?" } %>
+
+<% end %>
