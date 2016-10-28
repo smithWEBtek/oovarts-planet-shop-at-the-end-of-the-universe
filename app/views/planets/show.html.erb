@@ -1,8 +1,8 @@
 <div class="jumbotron">
-	<h1>Welcome to <%= @planet.name %></h1>
+	<h1>Welcome to <%= @planet.name.titleize %></h1>
 
 	<ul class="list-group">
-		<li class="list-group-item">Owner: <%= @planet.user.name %></li>
+		<li class="list-group-item">Owner: <%= @planet.user.name.titleize %></li>
 		<li class="list-group-item">Population: <%= @planet.population * 1000 %></li>
 		<li class="list-group-item">Moons: <%= @planet.moons %></li>
 		<li class="list-group-item">Price: <%= @planet.price * 1000 %> Pu</li>
@@ -17,7 +17,7 @@
 	</tr>
 	<% @planet.orders.each do |order| %>
 		<tr>
-			<td><%= link_to order.feature.name, feature_path(order.feature) %></td>
+			<td><%= link_to order.feature.name.titleize, feature_path(order.feature) %></td>
 			<td><%= order.size %></td>
 		</tr>
 	<% end %>

@@ -4,7 +4,7 @@
 	<ul class="list-group">
 		<% @features.each do |feature| %>
 			<tr>
-				<li class="list-group-item"><%= link_to feature.name, feature_path(feature) %></li>
+				<li class="list-group-item"><%= link_to feature.name.titleize, feature_path(feature) %></li>
 			</tr>
 		<% end %>
 	</ul>
