@@ -10,7 +10,10 @@
 <body>
 
 <div class="container">
-	<h1 class="logo">Oovart's Planet Shop At the End of the Universe</h1>
+	<h1 class="logo">
+		<a href="/">Oovart's Planet Shop At the End of the Universe</a>
+	</h1>
+	<%= link_to 'Home', root_path %> | <%= link_to 'Browse Planets', planets_path %> | <%= link_to 'Browse Features', planets_path %> | <%= link_to 'Order Planet', new_planet_path %> | <%= link_to 'Order Feature', new_feature_path %>
 	<%= yield %>
 </div>
 
