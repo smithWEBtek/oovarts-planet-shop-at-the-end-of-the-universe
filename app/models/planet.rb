@@ -21,7 +21,7 @@ class Planet < ActiveRecord::Base
 
 	def orders_attributes=(attributes)
 		attributes.values.each do |att|
-			if !att[:feature_id].blank? && !att[:size].blank?
+			if !att[:feature_id].blank? || !att[:feature_attributes].blank? && !att[:size].blank?
 				order = Order.new(att)
 				order.planet = self
 				order.price = rand(1000..8000)

@@ -5,10 +5,8 @@ class Order < ActiveRecord::Base
 	validates :size, presence: true
 
 	def feature_attributes=(attributes)
-		if !attributes[:name].blank?
-			feature = Feature.find_or_create_by(attributes)
-			self.feature_id = feature.id
-		end
+		feature = Feature.find_or_create_by(attributes)
+		self.feature_id = feature.id
 	end
 
 end
