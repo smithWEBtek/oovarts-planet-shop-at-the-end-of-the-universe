@@ -10,7 +10,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    binding.pry
     @order = Order.new(order_params)
     @order.price = rand(1000..8000)
     if !@order.valid?
