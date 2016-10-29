@@ -11,7 +11,21 @@
 
 	<div class="form-group">
 		<%= f.label 'Choose a feature', :class => "form-check-inline" %>
-    <%= f.collection_check_boxes :feature_ids, Feature.all, :id, :name, :class => "form-check-input"%>
+    <%= f.collection_select :feature, Feature.all, :id, :name, :class => "form-check-input"%>
+	</div>
+
+	<div class="form-group">
+    <%= ff.fields_for :feature do |fff| %>
+
+      <%= fff.label :name %>
+      <%= fff.text_field :name, class: "form-control" %>
+
+      <%= fff.label :description %>
+      <%= fff.text_area :description, class: "form-control" %>
+    <% end %>
+
+	  <%= ff.label :size %>
+	  <%= ff.number_field :size, class: "form-control" %>
 	</div>
 
 	<div class="form-group">
