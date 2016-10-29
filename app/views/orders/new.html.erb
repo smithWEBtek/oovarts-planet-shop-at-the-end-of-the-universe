@@ -1,52 +1,59 @@
-<h1>Order A New Feature</h1>
+<div class="row">
+	<div class="jumbotron col-md-6">
+		<h2>Order A Feature</h2>
+		
+		<%= form_for @order do |f| %>
+		
+			<% f.hidden_field :price %>
+		
+			<div class="form-group">
+				<h3><%= f.label 'Choose a Planet' %></h3>
+		    <%= f.collection_select :planet_id, Planet.all, :id, :name, {:prompt => 'Select'}, :class => "form-control" %>
+			</div>
+		
+			<div class="form-group">
+				<%= f.fields_for :feature, Feature.new do |ff| %>
+					<h3><%= f.label 'Choose a feature', class: "form-check-inline" %></h3>
+			    <%= f.collection_select :feature_id, Feature.all, :id, :name, {:prompt => 'Select'}, class: "form-control" %>
+			  <% end %>
 
-<%= form_for @order do |f| %>
-
-	<% f.hidden_field :price %>
-
-	<div class="form-group">
-		<h3><%= f.label 'Choose a Planet' %></h3>
-    <%= f.collection_select :planet_id, Planet.all, :id, :name, :class => "form-control" %>
+			  <%= f.label :size, class: "form-check-inline" %> (in fy sq., max. 8,000,000)
+		    <%= f.number_field :size, class: "form-control" %>
+			</div>
+		
+			<%= f.submit 'Order Feature', class: "btn btn-default" %>
+		
+		<% end %>
 	</div>
-
-	<div class="form-group">
-		<%= f.fields_for :feature, Feature.new do |ff| %>
-			<h3><%= f.label 'Choose a feature', class: "form-check-inline" %></h3>
-	    <%= f.collection_select :feature_id, Feature.all, :id, :name, {:prompt => 'Select'}, class: "form-check-input" %>
-	  <% end %> <br>
-	  <%= f.label :size %> (in fy sq., max. 8,000,000)
-    <%= f.number_field :size, class: "form-control" %>
+	
+	<div class="jumbotron col-md-6">
+		<h2>Create A Custom Feature</h2>
+		
+		<%= form_for @order do |f| %>
+		
+			<% f.hidden_field :price %>
+		
+			<div class="form-group">
+				<h3><%= f.label 'Choose a Planet' %></h3>
+		    <%= f.collection_select :planet_id, Planet.all, :id, :name, {:prompt => 'Select'}, :class => "form-control" %>
+			</div>
+		
+			<div class="form-group">
+		    <%= f.fields_for :feature, Feature.new do |ff| %>
+		
+		      <%= ff.label :name %>
+		      <%= ff.text_field :name, class: "form-control" %>
+		
+		      <%= ff.label :description %>
+		      <%= ff.text_area :description, class: "form-control" %>
+		    <% end %>
+		
+		    <%= f.label :size %> (in fy sq., max. 8,000,000)
+		    <%= f.number_field :size, class: "form-control" %>
+			</div>
+		
+			<%= f.submit 'Order Feature', class: "btn btn-default" %>
+		
+		<% end %>
 	</div>
-
-	<%= f.submit 'Order Feature', class: "btn btn-default" %>
-
-<% end %>
-
-	<h3>Or Create A Custom Feature</h3>
-
-	<%= form_for @order do |f| %>
-
-	<% f.hidden_field :price %>
-
-	<div class="form-group">
-		<h3><%= f.label 'Choose a Planet' %></h3>
-    <%= f.collection_select :planet_id, Planet.all, :id, :name, :class => "form-control" %>
-	</div>
-
-	<div class="form-group">
-    <%= f.fields_for :feature, Feature.new do |ff| %>
-
-      <%= ff.label :name %>
-      <%= ff.text_field :name, class: "form-control" %>
-
-      <%= ff.label :description %>
-      <%= ff.text_area :description, class: "form-control" %>
-    <% end %>
-
-    <%= f.label :size %> (in fy sq., max. 8,000,000)
-    <%= f.number_field :size, class: "form-control" %>
-	</div>
-
-	<%= f.submit 'Order Feature', class: "btn btn-default" %>
-
-<% end %>
+</div>
