@@ -20,7 +20,7 @@ Specs:
 			- Planet.most_populated returns the planet with the highest population
 			- Planet.most_moons returns the planet with the most moons
 			- Planet.most_expensive returns the planet with the highest price
-- [ ] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item)
+- [x] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item)
 
 - [ ] Include signup (how e.g. Devise)
 - [ ] Include login (how e.g. Devise)
