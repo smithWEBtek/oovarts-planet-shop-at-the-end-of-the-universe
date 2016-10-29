@@ -18,13 +18,13 @@ User.create([
 
 # planets
 
-name_counter = 0
+counter = 0
 
 	planet_names = ['Shyweed', 'Ucrari', 'Enzel', 'Chonjer', 'Darr', 'Oodrore', 'Lari', 'Wykits', 'Tynthari', 'Eriodra', 'Thoffini', 'Kofula', 'Tinimimi', 'Inke', 'Erphaymmarl', 'Vrisox', 'Loolsula', 'Laputa', 'Zula', 'Krertfox', 'Shiorgrer', 'Groophap', 'Umunt', 'Sife', 'Queelfrid', 'Ivag', 'Alophus', 'Shaske', 'Oonkaiteet', 'Lyxore', 'Bolsar', 'Chucti', 'Clymby', 'Uvie', 'Zeectyon']
 
 	35.times do
-		Planet.create(name: planet_names[name_counter], price: rand(1000000..8000000), population: rand(5000..8000000), moons: rand(8), user_id: rand(1..5))
-		name_counter += 1
+		Planet.create(name: planet_names[counter], price: rand(1000000..8000000), population: rand(5000..8000000), moons: rand(8), user_id: rand(1..5))
+		counter += 1
 	end
 
 # features
@@ -43,16 +43,13 @@ Feature.create([
 	{name: 'river', description: 'A river is a natural flowing watercourse, usually freshwater, flowing towards an ocean, sea, lake or another river. In some cases a river flows into the ground and becomes dry at the end of its course without reaching another body of water. Small rivers can be referred to using names such as stream, creek, brook, rivulet, and rill. There are no official definitions for the generic term river as applied to geographic features.'},
 	{name: 'swamp', description: 'A swamp is a wetland that is forested. Many swamps occur along large rivers where they are critically dependent upon natural water level fluctuations. Other swamps occur on the shores of large lakes. Some swamps have hammocks, or dry-land protrusions, covered by aquatic vegetation, or vegetation that tolerates periodic inundation. The two main types of swamp are "true" or swamp forests and "transitional" or shrub swamps.'},
 	{name: 'volcano', description: 'A volcano is a rupture in the crust of a planetary-mass object, such as Earth, that allows hot lava, volcanic ash, and gases to escape from a magma chamber below the surface.'},
+	{name: 'waterfall', description: 'A waterfall is a place where water flows over a vertical drop or a series of drops in the course of a stream or river. Waterfalls also occur where meltwater drops over the edge of a tabular iceberg or ice shelf.'},
 ])
 
 # orders
 
-id_counter = 1
-35.times do
-	rand(5..20).times do
-		Order.create(price: rand(1000..8000), size: rand(50..8000000), feature_id: rand(1..13), planet_id: id_counter)
-	end
-	id_counter += 1
+450.times do
+	Order.create(price: rand(1000..8000), size: rand(50..8000000), feature_id: rand(1..13), planet_id: rand(1..35))
 end
 
 
