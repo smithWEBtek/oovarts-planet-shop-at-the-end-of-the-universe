@@ -19,7 +19,7 @@ class PlanetsController < ApplicationController
 
   def create
     # raise params.inspect
-    # binding.pry
+    binding.pry
     @planet = Planet.new(planet_params)
     @planet.price = rand(1000000..8000000)
     if !@planet.valid?
@@ -42,7 +42,7 @@ class PlanetsController < ApplicationController
   private
 
   def planet_params
-    params.require(:planet).permit(:id, :name, :price, :population, :moons, orders_attributes: [:id, :size, feature_attributes: [:id, :name, :description]])
+    params.require(:planet).permit(:id, :name, :price, :population, :moons, orders_attributes: [:id, :size, :feature_id, feature_attributes: [:id, :name, :description]])
   end
 
   def find_planet

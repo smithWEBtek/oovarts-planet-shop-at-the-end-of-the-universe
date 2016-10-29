@@ -23,6 +23,7 @@ class Planet < ActiveRecord::Base
 		attributes.values.each do |att|
 			order = Order.new(att)
 			order.planet = self
+			order.price = rand(1000..8000)
 			self.orders << order
 		end
 	end

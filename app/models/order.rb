@@ -8,7 +8,6 @@ class Order < ActiveRecord::Base
 
 	def feature_attributes=(attributes)
 		feature = Feature.find_or_create_by(attributes)
-		self.price = rand(1000..8000)
 		self.feature_id = feature.id
 	end
 
