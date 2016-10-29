@@ -1,38 +1,52 @@
-<h1>Order a New Feature</h1>
+<h1>Order A New Feature</h1>
 
 <%= form_for @order do |f| %>
 
 	<% f.hidden_field :price %>
 
 	<div class="form-group">
-		<%= f.label 'Choose a Planet' %>
-    <%= f.collection_select :planet, Planet.all, :id, :name, :class => "form-control" %>
+		<h3><%= f.label 'Choose a Planet' %></h3>
+    <%= f.collection_select :planet_id, Planet.all, :id, :name, :class => "form-control" %>
 	</div>
 
 	<div class="form-group">
-		<%= f.label 'Choose a feature', :class => "form-check-inline" %>
-    <%= f.collection_select :feature, Feature.all, :id, :name, :class => "form-check-input"%>
+		<%= f.fields_for :feature, Feature.new do |ff| %>
+			<h3><%= f.label 'Choose a feature', class: "form-check-inline" %></h3>
+	    <%= f.collection_select :feature_id, Feature.all, :id, :name, {:prompt => 'Select'}, class: "form-check-input" %>
+	  <% end %> <br>
+	  <%= f.label :size %> (in fy sq., max. 8,000,000)
+    <%= f.number_field :size, class: "form-control" %>
+	</div>
+
+	<%= f.submit 'Order Feature', class: "btn btn-default" %>
+
+<% end %>
+
+	<h3>Or Create A Custom Feature</h3>
+
+	<%= form_for @order do |f| %>
+
+	<% f.hidden_field :price %>
+
+	<div class="form-group">
+		<h3><%= f.label 'Choose a Planet' %></h3>
+    <%= f.collection_select :planet_id, Planet.all, :id, :name, :class => "form-control" %>
 	</div>
 
 	<div class="form-group">
-    <%= ff.fields_for :feature do |fff| %>
+    <%= f.fields_for :feature, Feature.new do |ff| %>
 
-      <%= fff.label :name %>
-      <%= fff.text_field :name, class: "form-control" %>
+      <%= ff.label :name %>
+      <%= ff.text_field :name, class: "form-control" %>
 
-      <%= fff.label :description %>
-      <%= fff.text_area :description, class: "form-control" %>
+      <%= ff.label :description %>
+      <%= ff.text_area :description, class: "form-control" %>
     <% end %>
 
-	  <%= ff.label :size %>
-	  <%= ff.number_field :size, class: "form-control" %>
+    <%= f.label :size %> (in fy sq., max. 8,000,000)
+    <%= f.number_field :size, class: "form-control" %>
 	</div>
 
-	<div class="form-group">
-		<%= f.label :size %> (in fy sq., max. 8,000,000)
-    <%= f.number_field :size, :class => "form-control" %>
-	</div>
-
-	<%= f.submit 'Order Planet', :class => "btn btn-default", data: { confirm: "Are you sure?" } %>
+	<%= f.submit 'Order Feature', class: "btn btn-default" %>
 
 <% end %>

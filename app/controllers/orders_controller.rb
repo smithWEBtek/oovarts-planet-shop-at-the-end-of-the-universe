@@ -10,12 +10,11 @@ class OrdersController < ApplicationController
   end
 
   def create
+    binding.pry
     @order = Order.new(order_params)
     @order.price = rand(1000..8000)
     if !@order.valid?
       render :new
-    # elsif existing_order = order.find_by(name: params[:order][:name])
-    #   redirect_to order_path(existing_order)
     else
       @order.save
       redirect_to orders_path
