@@ -23,8 +23,15 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+#user authentication
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+
+# create fake seed data
 gem 'faker'
+
+# debugging pry gems
 gem 'pry'
 gem 'pry-rails'
 gem 'pry-nav'
