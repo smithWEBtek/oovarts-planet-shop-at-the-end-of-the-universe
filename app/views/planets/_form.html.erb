@@ -17,16 +17,45 @@
     <%= f.number_field :moons, class: "form-control" %>
 	</div>
 
+	<h2>Choose Features (Optional)</h2>
+
+	<h3>Feature 1</h3>
 	<div class="form-group">
 		<%= f.fields_for :orders do |ff| %>
 
-			<%= ff.collection_select :feature_id, Feature.all, :id, :name, class: "form-check-input"%>
+			<%= ff.collection_select :feature_id, Feature.all, :id, :name %>
 
 		  <%= ff.label :size %>
-		  <%= ff.number_field :size, class: "form-control" %>
+		  <%= ff.number_field :size %>
 
     <% end %>
 	</div>
+
+	<h3>Feature 2</h3>
+	<div class="form-group">
+		<%= f.fields_for :orders do |ff| %>
+
+			<%= ff.collection_select :feature_id, Feature.all, :id, :name %>
+
+		  <%= ff.label :size %>
+		  <%= ff.number_field :size %>
+
+    <% end %>
+	</div>
+
+	<h3>Feature 3</h3>
+	<div class="form-group">
+		<%= f.fields_for :orders do |ff| %>
+
+			<%= ff.collection_select :feature_id, Feature.all, :id, :name %>
+
+		  <%= ff.label :size %>
+		  <%= ff.number_field :size %>
+
+    <% end %>
+	</div>
+
+	<h3>Custom Feature</h3>
 
 	<div class="form-group">
 		<%= f.fields_for :orders do |ff| %>
