@@ -19,15 +19,15 @@ class PlanetsController < ApplicationController
 
   def create
     # raise params.inspect
-    binding.pry
+    # binding.pry
     @planet = Planet.new(planet_params)
     @planet.price = rand(1000000..8000000)
-    # if !@planet.valid?
-    #   render :new
-    # else
+    if !@planet.valid?
+      render :new
+    else
       @planet.save
       redirect_to planets_path
-    # end
+    end
   end
 
   def edit
