@@ -7,8 +7,10 @@ class Order < ActiveRecord::Base
 	# accepts_nested_attributes_for :feature
 
 	def feature_attributes=(attributes)
-		feature = Feature.find_or_create_by(attributes)
-		self.feature_id = feature.id
+		if !attributes[:name].blank?
+			feature = Feature.find_or_create_by(attributes)
+			self.feature_id = feature.id
+		end
 	end
 
 end

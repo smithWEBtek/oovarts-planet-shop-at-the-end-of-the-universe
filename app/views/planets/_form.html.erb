@@ -23,7 +23,7 @@
 	<div class="form-group">
 		<%= f.fields_for :orders do |ff| %>
 
-			<%= ff.collection_select :feature_id, Feature.all, :id, :name %>
+			<%= ff.collection_select :feature_id, Feature.all, :id, :name, {:prompt => 'Select'} %>
 
 		  <%= ff.label :size %>
 		  <%= ff.number_field :size %>
@@ -35,7 +35,7 @@
 	<div class="form-group">
 		<%= f.fields_for :orders do |ff| %>
 
-			<%= ff.collection_select :feature_id, Feature.all, :id, :name %>
+			<%= ff.collection_select :feature_id, Feature.all, :id, :name, {:prompt => 'Select'} %>
 
 		  <%= ff.label :size %>
 		  <%= ff.number_field :size %>
@@ -47,7 +47,7 @@
 	<div class="form-group">
 		<%= f.fields_for :orders do |ff| %>
 
-			<%= ff.collection_select :feature_id, Feature.all, :id, :name %>
+			<%= ff.collection_select :feature_id, Feature.all, :id, :name, {:prompt => 'Select'} %>
 
 		  <%= ff.label :size %>
 		  <%= ff.number_field :size %>

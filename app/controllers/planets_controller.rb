@@ -19,7 +19,7 @@ class PlanetsController < ApplicationController
 
   def create
     # raise params.inspect
-    binding.pry
+    # binding.pry
     @planet = Planet.new(planet_params)
     @planet.price = rand(1000000..8000000)
     if !@planet.valid?
