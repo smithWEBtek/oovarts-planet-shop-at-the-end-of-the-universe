@@ -4,8 +4,6 @@ class Order < ActiveRecord::Base
 
 	validates :size, presence: true
 
-	# accepts_nested_attributes_for :feature
-
 	def feature_attributes=(attributes)
 		if !attributes[:name].blank?
 			feature = Feature.find_or_create_by(attributes)
