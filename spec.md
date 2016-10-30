@@ -27,7 +27,8 @@ Specs:
 - [x] Include signup (how e.g. Devise)
 - [x] Include login (how e.g. Devise)
 - [x] Include logout (how e.g. Devise)
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
+- [x] Include third party signup/login (how e.g. Devise/OmniAuth)
+			- Users can sign up or log in through Facebook
 
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
 			- user_planet_path leads to /users/:user_id/planets/:id, accessible on the user's profile page
