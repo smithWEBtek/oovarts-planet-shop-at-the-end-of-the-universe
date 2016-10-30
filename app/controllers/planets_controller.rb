@@ -1,5 +1,5 @@
 class PlanetsController < ApplicationController
-  before_action :find_planet, except: [:index, :show, :new, :create]
+  before_action :find_planet, except: [:index, :show, :new, :create, :destroy_all]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -58,6 +58,15 @@ class PlanetsController < ApplicationController
   def destroy
     Planet.find(params[:id]).destroy
     redirect_to planets_url
+  end
+
+  def destroy_all
+    if params[:id] == current_user.id
+      current_user.planets.destroy_all
+    else
+      flash[:alert] = "You must be the owner to destroy the planets."
+    end
+    redirect_to user_path(current_user)
   end
 
   private

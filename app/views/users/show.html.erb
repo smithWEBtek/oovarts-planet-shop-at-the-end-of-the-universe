@@ -22,3 +22,7 @@
 		</tr>
 	<% end %>
 </table>
+
+<% if @user == current_user %>
+	<%= link_to "End the Universe", user_destroy_planets_path(@user),:confirm=>'Are you sure?' %>
+<% end %>
