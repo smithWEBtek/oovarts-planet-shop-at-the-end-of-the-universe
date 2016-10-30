@@ -27,7 +27,7 @@
 
 			<%= ff.collection_select :feature_id, Feature.all, :id, :name, {:prompt => 'Select'} %>
 
-		  <%= ff.label :size %>
+		  <%= ff.label :size %> (in fy sq., max. 8,000,000)
 		  <%= ff.number_field :size %>
 
     <% end %>
@@ -39,7 +39,7 @@
 
 			<%= ff.collection_select :feature_id, Feature.all, :id, :name, {:prompt => 'Select'} %>
 
-		  <%= ff.label :size %>
+		  <%= ff.label :size %> (in fy sq., max. 8,000,000)
 		  <%= ff.number_field :size %>
 
     <% end %>
@@ -51,7 +51,7 @@
 
 			<%= ff.collection_select :feature_id, Feature.all, :id, :name, {:prompt => 'Select'}, {:prompt => 'Select'} %>
 
-		  <%= ff.label :size %>
+		  <%= ff.label :size %> (in fy sq., max. 8,000,000)
 		  <%= ff.number_field :size %>
 
     <% end %>
@@ -71,7 +71,7 @@
 	      <%= fff.text_area :description, class: "form-control" %>
 	    <% end %>
 
-		  <%= ff.label :size %>
+		  <%= ff.label :size %> (in fy sq., max. 8,000,000)
 		  <%= ff.number_field :size, class: "form-control" %>
 
     <% end %>
