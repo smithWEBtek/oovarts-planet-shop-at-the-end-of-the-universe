@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.price = rand(1000..8000)
-    if !@order.valid? || @order.feature_id.nil? || @order.planet_id.blank?
+    if !@order.valid? || @order.feature_id.nil? || @order.feature_id.blank? || @order.planet_id.blank?
       flash[:alert] = "Please make sure you have entered in the correct information."
       redirect_to new_order_path
     else
