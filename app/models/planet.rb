@@ -1,4 +1,6 @@
 class Planet < ActiveRecord::Base
+	before_save { self.name = name.titleize }
+
 	belongs_to :user
 	has_many :orders
 	has_many :features, through: :orders

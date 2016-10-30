@@ -27,7 +27,6 @@ class PlanetsController < ApplicationController
     @planet = Planet.new(planet_params)
     @planet.price = rand(1000000..8000000)
     @planet.user = current_user
-    binding.pry
     if !@planet.valid? || !user_signed_in?
       flash[:alert] = "Please make sure you have entered in the correct information."
       redirect_to new_planet_path
@@ -42,7 +41,7 @@ class PlanetsController < ApplicationController
     if @planet.user == current_user
       render :edit
     else
-      flash[:alert] = "You must be the owner to edit a planet."
+      flash[:alert] = "You cannot edit another user's planets."
       redirect_to planets_path
     end
   end
@@ -51,14 +50,19 @@ class PlanetsController < ApplicationController
     if @planet.user == current_user && @planet.update(planet_params)
       redirect_to planet_path(@planet)
     else
-      flash[:alert] = "You must be the owner to edit a planet."
+      flash[:alert] = "You cannot edit another user's planets."
       redirect_to planets_path
     end
   end
 
   def destroy
-    Planet.find(params[:id]).destroy
-    redirect_to planets_url
+    @user = @planet.user
+    if @planet.user == current_user
+      @planet.destroy
+    else
+      flash[:alert] = "You cannot destroy another user's planets."
+    end
+    redirect_to user_path(@user)
   end
 
   def destroy_all
@@ -66,7 +70,7 @@ class PlanetsController < ApplicationController
       flash[:alert] = "You don't have any planets to destroy."
     elsif params[:user_id].to_i == current_user.id
       current_user.planets.destroy_all
-      flash[:notice] = "The universe has successfully ended. Please purchase planets to start over."
+      flash[:notice] = "The universe has successfully ended. Please purchase new planets to start over."
     else
       flash[:alert] = "You must be the owner to destroy the planets."
     end
