@@ -5,11 +5,11 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		if current_user
-			@user = current_user
+		if user_signed_in?
+			@user = User.find(params[:id])
       render :show
     else
-      flash[:alert] = "You must be logged in to view your profile."
+      flash[:alert] = "You must be logged in to view profiles."
       redirect_to root_path
     end
   end

@@ -1,5 +1,6 @@
 class PlanetsController < ApplicationController
   before_action :find_planet, except: [:index, :new, :create]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @planets = Planet.all

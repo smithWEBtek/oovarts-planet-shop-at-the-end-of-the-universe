@@ -1,8 +1,14 @@
 <h1><%= @user.name.titleize %></h1>
 
-<h2>Planets:</h2>
-<ul class="list-group">
+<h2>Planets</h2>
+<table class="table">
 	<% @user.planets.each do |planet| %>
-		<li class="list-group-item"><%= link_to planet.name.titleize, planet_path(planet) %></li>
+		<tr>
+			<td><%= link_to planet.name.titleize, planet_path(planet) %></td>
+			<% if planet.user == current_user %>
+				<td><%= link_to 'Edit', edit_planet_path(planet) %></td>
+				<td><%= link_to 'Destroy', planet, method: :delete, data: { confirm: 'Are you sure?'} %></td>
+			<% end %>
+		</tr>
 	<% end %>
-</ul>
+</table>
