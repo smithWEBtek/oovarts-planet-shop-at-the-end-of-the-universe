@@ -4,7 +4,7 @@ class Planet < ActiveRecord::Base
 	has_many :features, through: :orders
 
 	validates :name, presence: true, uniqueness: true, length: { in: 3..20 }
-	validates :moons, numericality: { less_than_or_equal_to: 8 }
+	validates :moons, numericality: { less_than_or_equal_to: 15 }
 	validates :population, numericality: { less_than_or_equal_to: 8000000 }
 
 	def self.most_populated

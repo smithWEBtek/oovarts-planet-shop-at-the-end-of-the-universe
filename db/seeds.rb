@@ -23,7 +23,7 @@ counter = 0
 	planet_names = ['Shyweed', 'Ucrari', 'Enzel', 'Chonjer', 'Darr', 'Oodrore', 'Lari', 'Wykits', 'Tynthari', 'Eriodra', 'Thoffini', 'Kofula', 'Tinimimi', 'Inke', 'Erphaymmarl', 'Vrisox', 'Loolsula', 'Laputa', 'Zula', 'Krertfox', 'Shiorgrer', 'Groophap', 'Umunt', 'Sife', 'Queelfrid', 'Ivag', 'Alophus', 'Shaske', 'Oonkaiteet', 'Lyxore', 'Bolsar', 'Chucti', 'Clymby', 'Uvie', 'Zeectyon']
 
 	35.times do
-		Planet.create(name: planet_names[counter], price: rand(1000000..8000000), population: rand(5000..8000000), moons: rand(8), user_id: rand(1..5))
+		Planet.create(name: planet_names[counter], price: rand(1000000..8000000), population: rand(5000..8000000), moons: rand(16), user_id: rand(1..5))
 		counter += 1
 	end
 
