@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
       render :new
     else
       @order.save
+      flash[:alert] = "Your new feature costs #{@order.price} Pu. We have deducted this amount from your account. Thank you for your business."
       redirect_to orders_path
     end
   end

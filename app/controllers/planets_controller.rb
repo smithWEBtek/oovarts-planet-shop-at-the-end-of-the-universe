@@ -22,21 +22,36 @@ class PlanetsController < ApplicationController
     @planet = Planet.new(planet_params)
     @planet.price = rand(1000000..8000000)
     @planet.user = current_user
-    if !@planet.valid?
+    if !@planet.valid? || !user_signed_in?
       render :new
     else
       @planet.save
+      flash[:alert] = "Your planet costs #{@planet.price} Pu. We have deducted this amount from your account. Thank you for your business."
       redirect_to planets_path
     end
   end
 
   def edit
+    if @planet.user == current_user
+      render :edit
+    else
+      flash[:alert] = "You must be the owner to edit a planet."
+      redirect_to planets_path
+    end
   end
 
   def update
+    if @planet.user == current_user && @planet.update(planet_params)
+      redirect_to planet_path(@planet)
+    else
+      flash[:alert] = "You must be the owner to edit a planet."
+      redirect_to planets_path
+    end
   end
 
   def destroy
+    Planet.find(params[:id]).destroy
+    redirect_to planets_url
   end
 
   private
