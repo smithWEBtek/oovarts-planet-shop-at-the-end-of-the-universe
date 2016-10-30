@@ -2,11 +2,19 @@
 <h2>Number of planets: <%= @user.planets.count %></h2>
 <h2>Total amount spent on planets: <%= @user.planets.sum(:price) * 1000 %> Pu</h2>
 
-<h2>Planets</h2>
 <table class="table">
+	<tr>
+		<th>Planets</th>
+		<th>Number of Features</th>
+		<th>Amount Spent on Features</th>
+		<th></th>
+		<th></th>
+	</tr>
 	<% @user.planets.each do |planet| %>
 		<tr>
 			<td><%= link_to planet.name.titleize, user_planet_path(@user, planet) %></td>
+			<td><%= planet.features.count %></td>
+			<td><%= planet.orders.sum(:price) * 1000 %></td>
 			<% if planet.user == current_user %>
 				<td><%= link_to 'Edit', edit_planet_path(planet) %></td>
 				<td><%= link_to 'Destroy', planet, method: :delete, data: { confirm: 'Are you sure?'} %></td>

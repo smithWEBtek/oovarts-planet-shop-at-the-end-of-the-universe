@@ -14,11 +14,13 @@
 	<tr>
 		<th>Feature</th>
 		<th>Size (fy sq.)</th>
+		<th>Price (Pu)</th>
 	</tr>
 	<% @planet.orders.each do |order| %>
 		<tr>
 			<td><%= link_to order.feature.name.titleize, feature_path(order.feature) %></td>
 			<td><%= order.size %></td>
+			<td><%= order.price * 1000 %></td>
 		</tr>
 	<% end %>
 </table>
