@@ -2,6 +2,21 @@
 
 <%= form_for @planet do |f| %>
 
+  <% if @planet.errors.any? %>
+    <div id="error_explanation">
+      <h3>
+        <%= pluralize(@planet.errors.count, "error") %>
+        prohibited this form from being submitted:
+      </h3>
+
+      <ul>
+      <% @planet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 	<% f.hidden_field :price %>
 
 	<div class="form-group">

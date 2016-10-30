@@ -27,12 +27,13 @@ class PlanetsController < ApplicationController
     @planet = Planet.new(planet_params)
     @planet.price = rand(1000000..8000000)
     @planet.user = current_user
+    binding.pry
     if !@planet.valid? || !user_signed_in?
       flash[:alert] = "Please make sure you have entered in the correct information."
       redirect_to new_planet_path
     else
       @planet.save
-      flash[:alert] = "Your planet costs #{@planet.price * 1000} Pu. We have deducted this amount from your account. Thank you for your business."
+      flash[:notice] = "Your new planet #{@planet.name.titleize} costs #{@planet.price * 1000} Pu. We have deducted this amount from your account. Thank you for your business."
       redirect_to planet_path(@planet)
     end
   end
@@ -61,8 +62,11 @@ class PlanetsController < ApplicationController
   end
 
   def destroy_all
-    if params[:user_id].to_i == current_user.id
+    if current_user.planets.count == 0
+      flash[:alert] = "You don't have any planets to destroy."
+    elsif params[:user_id].to_i == current_user.id
       current_user.planets.destroy_all
+      flash[:notice] = "The universe has successfully ended. Please purchase planets to start over."
     else
       flash[:alert] = "You must be the owner to destroy the planets."
     end
