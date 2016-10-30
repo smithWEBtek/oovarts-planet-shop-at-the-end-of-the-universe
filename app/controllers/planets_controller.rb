@@ -26,7 +26,7 @@ class PlanetsController < ApplicationController
       render :new
     else
       @planet.save
-      flash[:alert] = "Your planet costs #{@planet.price} Pu. We have deducted this amount from your account. Thank you for your business."
+      flash[:alert] = "Your planet costs #{@planet.price * 1000} Pu. We have deducted this amount from your account. Thank you for your business."
       redirect_to planets_path
     end
   end
