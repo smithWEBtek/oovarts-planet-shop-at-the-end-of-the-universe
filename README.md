@@ -6,4 +6,4 @@ Oovart’s Planet Shop at the End of the Universe is a fully functional Ruby on 
 
 ## Installation
 
-Make sure you have Ruby 2.2.3 or later, and Rails installed locally. Rails 4.2.5 or later will guarantee that the app will run properly. After you download or `git clone` this repository, run `bundle install` and `rails s` in your command line interface, then navigate to `http://localhost:3000` to see the app in action.
+Make sure your Ruby is version 2.2.3 or later, and Rails is installed locally. Rails 4.2.5 or later will guarantee that the app functions properly. Download or `git clone` this repository, run `bundle install` and `rails s` in your command line interface, then navigate to `http://localhost:3000` to see the app in action.
