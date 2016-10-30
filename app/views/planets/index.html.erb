@@ -4,21 +4,21 @@
 			<h4>Most Populated Planet Award:</h4>
 			<p class="lead"><%= link_to @most_populated.name.titleize, planet_path(@most_populated) %></p>
 			<p>Population: <%= @most_populated.population * 1000 %></p>
-			<p>Owner: <%= link_to @most_populated.user.name.titleize %></p>
+			<p>Owner: <%= link_to @most_populated.user.name.titleize, user_path(@most_populated.user) %></p>
 		</div>
 
 		<div class="jumbotron">
 			<h4>Most Moons Planet Award:</h4>
 			<p class="lead"><%= link_to @most_moons.name.titleize, planet_path(@most_moons) %></p>
 			<p>Moons: <%= @most_moons.moons %></p>
-			<p>Owner: <%= link_to @most_moons.user.name.titleize %></p>
+			<p>Owner: <%= link_to @most_moons.user.name.titleize, user_path(@most_moons.user) %></p>
 		</div>
 
 		<div class="jumbotron">
 			<h4>Most Expensive Planet Award:</h4>
 			<p class="lead"><%= link_to @most_expensive.name.titleize, planet_path(@most_expensive) %></p>
 			<p>Price: <%= @most_expensive.price * 1000 %> Pu</p>
-			<p>Owner: <%= link_to @most_expensive.user.name.titleize %></p>
+			<p>Owner: <%= link_to @most_expensive.user.name.titleize, user_path(@most_expensive.user) %></p>
 		</div>
 	</div>
 	<div class="col-md-6">
@@ -31,7 +31,7 @@
 			<% @planets.each do |planet| %>
 				<tr>
 					<td><%= link_to planet.name.titleize, planet_path(planet) %></td>
-					<td><%= planet.user.name.titleize %></td>
+					<td><%= link_to planet.user.name.titleize, user_path(planet.user) %></td>
 					<td><%= planet.price * 1000 %></td>
 				</tr>
 			<% end %>	

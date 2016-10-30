@@ -2,7 +2,7 @@
 	<h1>Welcome to <%= @planet.name.titleize %></h1>
 
 	<ul class="list-group">
-		<li class="list-group-item">Owner: <%= @planet.user.name.titleize %></li>
+		<li class="list-group-item">Owner: <%= link_to @planet.user.name.titleize, user_path(@planet.user) %></li>
 		<li class="list-group-item">Population: <%= @planet.population * 1000 %></li>
 		<li class="list-group-item">Moons: <%= @planet.moons %></li>
 		<li class="list-group-item">Price: <%= @planet.price * 1000 %> Pu</li>
