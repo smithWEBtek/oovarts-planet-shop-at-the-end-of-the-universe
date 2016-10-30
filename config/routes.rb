@@ -3,9 +3,14 @@ Rails.application.routes.draw do
   root 'static#index'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
-  resources :users, only: [:show, :index]
 
-  resources :planets
+  resources :users, only: [:show, :index] do
+    resources :planets, only: [:show]
+  end
+
+  resources :planets do
+    resources :orders, only: [:new]
+  end
 
   resources :orders, only: [:index, :new, :create]
 

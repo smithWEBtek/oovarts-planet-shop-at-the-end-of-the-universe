@@ -1,5 +1,5 @@
 class PlanetsController < ApplicationController
-  before_action :find_planet, except: [:index, :new, :create]
+  before_action :find_planet, except: [:index, :show, :new, :create]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -10,6 +10,11 @@ class PlanetsController < ApplicationController
   end
 
   def show
+    if params[:user_id]
+      @planet = Planet.find(params[:id])
+    else
+      @planet = Planet.find(params[:id])
+    end
   end
 
   def new
@@ -27,7 +32,7 @@ class PlanetsController < ApplicationController
     else
       @planet.save
       flash[:alert] = "Your planet costs #{@planet.price * 1000} Pu. We have deducted this amount from your account. Thank you for your business."
-      redirect_to planets_path
+      redirect_to planet_path(@planet)
     end
   end
 

@@ -21,18 +21,22 @@ Specs:
 			- Planet.most_moons returns the planet with the most moons
 			- Planet.most_expensive returns the planet with the highest price
 - [x] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item)
+			- New planet form can create new order objects and new feature objects
+			- New order form can create new feature objects
 
-- [ ] Include signup (how e.g. Devise)
-- [ ] Include login (how e.g. Devise)
-- [ ] Include logout (how e.g. Devise)
+- [x] Include signup (how e.g. Devise)
+- [x] Include login (how e.g. Devise)
+- [x] Include logout (how e.g. Devise)
 - [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
 
-- [ ] Include nested resource show or index (URL e.g. users/2/recipes)
-- [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [x] Include nested resource show or index (URL e.g. users/2/recipes)
+			- user_planet_path leads to /users/:user_id/planets/:id, accessible on the user's profile page
+- [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
+			- new_planet_order_path leads to /planets/:planet_id/orders/new 
+- [x] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x] The application is pretty DRY
+- [x] Limited logic in controllers
+- [x] Views use helper methods if appropriate
+- [x] Views use partials if appropriate
