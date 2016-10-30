@@ -1,7 +1,7 @@
 <div class="navbar">
 	<% if current_user %>
 		<div class="text-right">
-			<p>Hi, <%= current_user.email %></p>
+			<p>Hi, <%= current_user.name.titleize %></p>
 			<%= link_to("Sign out", destroy_user_session_path, :method => "delete") %> | 
 			<%= link_to "My Profile", user_path(current_user) %>
 		</div>
