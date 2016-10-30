@@ -8,7 +8,7 @@
 		
 			<div class="form-group">
 				<h3><%= f.label 'Choose a Planet' %></h3>
-		    <%= f.collection_select :planet_id, Planet.all, :id, :name, {:prompt => 'Select'}, :class => "form-control" %>
+		    <%= f.collection_select :planet_id, current_user.planets, :id, :name, {:prompt => 'Select'}, :class => "form-control" %>
 			</div>
 		
 			<div class="form-group">
@@ -35,7 +35,7 @@
 		
 			<div class="form-group">
 				<h3><%= f.label 'Choose a Planet' %></h3>
-		    <%= f.collection_select :planet_id, Planet.all, :id, :name, {:prompt => 'Select'}, :class => "form-control" %>
+		    <%= f.collection_select :planet_id, current_user.planets, :id, :name, {:prompt => 'Select'}, :class => "form-control" %>
 			</div>
 		
 			<div class="form-group">
