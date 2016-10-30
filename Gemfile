@@ -23,6 +23,9 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# Shim to load environment variables from .env into ENV in development.
+gem 'dotenv-rails', :require => 'dotenv/rails-now'
+
 #user authentication
 gem 'devise'
 gem 'omniauth'
@@ -48,7 +51,6 @@ gem 'pry-nav'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'dotenv-rails'
 end
 
 group :development do
