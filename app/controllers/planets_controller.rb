@@ -61,7 +61,7 @@ class PlanetsController < ApplicationController
   end
 
   def destroy_all
-    if params[:id] == current_user.id
+    if params[:user_id].to_i == current_user.id
       current_user.planets.destroy_all
     else
       flash[:alert] = "You must be the owner to destroy the planets."
