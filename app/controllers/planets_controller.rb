@@ -28,7 +28,8 @@ class PlanetsController < ApplicationController
     @planet.price = rand(1000000..8000000)
     @planet.user = current_user
     if !@planet.valid? || !user_signed_in?
-      render :new
+      flash[:alert] = "Please make sure you have entered in the correct information."
+      redirect_to new_planet_path
     else
       @planet.save
       flash[:alert] = "Your planet costs #{@planet.price * 1000} Pu. We have deducted this amount from your account. Thank you for your business."

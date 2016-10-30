@@ -14,7 +14,8 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.price = rand(1000..8000)
     if !@order.valid?
-      render :new
+      flash[:alert] = "Please make sure you have entered in the correct information."
+      redirect_to new_order_path
     else
       @order.save
       flash[:alert] = "Your new feature costs #{@order.price * 1000} Pu. We have deducted this amount from your account. Thank you for your business."
