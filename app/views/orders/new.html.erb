@@ -55,7 +55,7 @@
 			<div class="form-group">
 		    <%= f.fields_for :feature, Feature.new do |ff| %>
 		
-		      <%= ff.label :name %>
+		      <%= ff.label 'New Feature Name' %>
 		      <%= ff.text_field :name, class: "form-control" %>
 		
 		      <%= ff.label :description %>

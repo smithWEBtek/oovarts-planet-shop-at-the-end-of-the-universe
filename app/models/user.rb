@@ -30,4 +30,14 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  def features_total
+    array = []
+    self.planets.each do |planet|
+      planet.orders.each do |order|
+        array << order.price * 1000
+      end
+    end
+    array.inject(0){|sum,x| sum + x }
+  end
 end

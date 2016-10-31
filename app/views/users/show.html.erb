@@ -1,6 +1,7 @@
 <h1><%= @user.name.titleize %></h1>
 <h2>Number of planets: <%= @user.planets.count %></h2>
-<h2>Total amount spent on planets: <%= @user.planets.sum(:price) * 1000 %> Pu</h2> <br>
+<h2>Total amount spent on planets: <%= @user.planets.sum(:price) * 1000 %> Pu</h2>
+<h2>Total amount spent on features: <%= @user.features_total %> Pu</h2> <br>
 
 <table class="table">
 	<tr>

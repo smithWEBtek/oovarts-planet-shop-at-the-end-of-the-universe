@@ -24,6 +24,7 @@ class PlanetsController < ApplicationController
   end
 
   def create
+    binding.pry
     @planet = Planet.new(planet_params)
     @planet.price = rand(1000000..8000000)
     @planet.user = current_user
@@ -32,7 +33,7 @@ class PlanetsController < ApplicationController
       redirect_to new_planet_path
     else
       @planet.save
-      flash[:notice] = "Your new planet #{@planet.name.titleize} costs #{@planet.price * 1000} Pu. We have deducted this amount from your account. Thank you for your business."
+      flash[:notice] = "Your new planet #{@planet.name.titleize} and features cost a total of #{@planet.price * 1000 + @planet.orders.sum(:price) * 1000} Pu. We have deducted this amount from your account. Thank you for your business."
       redirect_to planet_path(@planet)
     end
   end
