@@ -24,7 +24,6 @@ class PlanetsController < ApplicationController
   end
 
   def create
-    binding.pry
     @planet = Planet.new(planet_params)
     @planet.price = rand(1000000..8000000)
     @planet.user = current_user
