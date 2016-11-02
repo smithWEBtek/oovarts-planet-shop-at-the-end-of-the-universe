@@ -40,4 +40,20 @@ class User < ActiveRecord::Base
     end
     array.inject(0){|sum,x| sum + x }
   end
+
+  def planets_total
+    self.planets.sum(:price) * 1000
+  end
+
+  def total_spent
+    self.features_total + self.planets_total
+  end
+
+  def self.most_valued
+    array = []
+    all.each do |user|
+      array << { user: user, total_spent: user.features_total + user.planets_total }
+    end
+    array.sort_by { |hash| hash[:total_spent] }.last
+  end
 end

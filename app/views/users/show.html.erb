@@ -1,8 +1,9 @@
 <div class="jumbotron">
 	<h1><%= @user.name.titleize %></h1>
 	<h2>Number of planets: <%= @user.planets.count %></h2>
-	<h3>Total amount spent on planets: <%= @user.planets.sum(:price) * 1000 %> Pu</h3>
+	<h3>Total amount spent on planets: <%= @user.planets_total %> Pu</h3>
 	<h3>Total amount spent on features: <%= @user.features_total %> Pu</h3>
+	<h2>Total amount spent: <%= @user.total_spent %> Pu</h2>
 </div>
 
 <table class="table">

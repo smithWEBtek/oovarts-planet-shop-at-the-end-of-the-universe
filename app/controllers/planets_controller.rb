@@ -4,6 +4,8 @@ class PlanetsController < ApplicationController
 
   def index
     @planets = Planet.all
+    @most_valued = User.most_valued
+    @most_valued_customer = @most_valued[:user]
     @most_populated = Planet.most_populated
     @most_moons = Planet.most_moons
     @most_expensive = Planet.most_expensive
@@ -24,6 +26,7 @@ class PlanetsController < ApplicationController
   end
 
   def create
+    binding.pry
     @planet = Planet.new(planet_params)
     @planet.price = rand(1000000..8000000)
     @planet.user = current_user
