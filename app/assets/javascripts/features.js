@@ -1,9 +1,5 @@
 $(function() {
 
-	$("#show-features").on("click", function(e) {
-		alert("success");
-	});
-
 	$("#show-orders").on("click", function(e) {
     $.ajax({
       method: "GET",
