@@ -1,3 +1,3 @@
 class PlanetOrderSerializer < ActiveModel::Serializer
-  attributes :id, :name, :price, :population, :moons, :user_id
+  attributes :id, :name, :user_id
 end
