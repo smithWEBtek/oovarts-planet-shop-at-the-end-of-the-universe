@@ -1,10 +1,17 @@
 $(function() {
 
+	var currentId;
+
 	$(".show-orders").on("click", function(e) {
     // prevent response from loading a new page
     e.preventDefault();
 
-    $.get(this.href).success(function(json) {
+    $(this).data('clicked', true);
+
+    currentId = $(".js-next").attr("data-id");
+
+    $.get("/features/" + currentId + "/orders").success(function(json) {
+    	console.log(currentId);
     	var list = $("div.orders-list table")
     	list.html("")
 
@@ -23,12 +30,18 @@ $(function() {
 	});
 
 	$(".js-next").on("click", function() {
+
 		var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.get("/features/" + nextId + ".json", function(feature) {
       $(".featureName").text(feature["name"]);
       $(".featureDescription").text(feature["description"]);
       // re-set the id to current on the link
       $(".js-next").attr("data-id", feature["id"]);
+
+      // does not show orders if user has not already clicked for it
+	    if($(".show-orders").data('clicked')) {
+		    $(".show-orders").click();
+			}
     });
 	});
 });
