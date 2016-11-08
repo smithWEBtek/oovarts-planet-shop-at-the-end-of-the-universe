@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
     @orders = @feature.orders
     # @orders = Order.all
 
-    # render 'orders/index'
+    render 'orders/index', layout: false
   end
 
   def show

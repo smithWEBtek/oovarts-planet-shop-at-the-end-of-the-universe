@@ -1,17 +1,19 @@
 $(function() {
 
-	$("#show-orders").on("click", function(e) {
+	$(".show-orders").on("click", function(e) {
     $.ajax({
       method: "GET",
       url: this.href
     }).success(function(response){
       // Get the response (it's the variable data)
-      $("div.orders-list").html(response)
-      console.log(response)
+      $("div.orders-list").html(response);
       // We'd really want to load that data into the DOM (add it to the current page)
-    }).error(function(notNeeded){
-      alert("we broke!!!!")
+    }).error(function(){
+      alert("There was an error.");
     });
+
+    // prevent response from loading a new page
+    e.preventDefault();
 	});
 
 	$("#next-feature").on("click", function(e) {

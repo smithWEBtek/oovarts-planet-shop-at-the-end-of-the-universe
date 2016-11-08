@@ -11,10 +11,10 @@
 </div>
 
 <div class="row">
-	<button id="show-orders" class="btn btn-default"><%= link_to 'Show all orders for features', feature_orders_path(@feature) %></button>
+	<button class="btn btn-default"><%= link_to 'Show all orders for this feature', feature_orders_path(@feature), :class => "show-orders" %></button>
 	
 	<button id="next-feature" class="btn btn-default">Next</button>
-</div>
+</div> <br>
 
 <div class="orders-list">
 	
