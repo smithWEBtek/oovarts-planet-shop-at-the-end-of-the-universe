@@ -7,7 +7,8 @@ class OrdersController < ApplicationController
     @orders = @feature.orders
     # @orders = Order.all
 
-    render 'orders/index', layout: false
+    # render layout: false
+    render json: @orders
   end
 
   def show
