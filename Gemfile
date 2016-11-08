@@ -26,6 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Shim to load environment variables from .env into ENV in development.
 gem 'dotenv-rails', :require => 'dotenv/rails-now'
 
+#Active Model Serializer
+gem 'active_model_serializers'
+
 #user authentication
 gem 'devise'
 gem 'omniauth'

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:new]
   end
 
-  resources :orders, only: [:index, :new, :create]
+  resources :orders, only: [:index, :show, :new, :create]
 
   resources :features, only: [:index, :show]
   # The priority is based upon order of creation: first created -> highest priority.

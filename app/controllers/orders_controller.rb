@@ -1,9 +1,16 @@
 class OrdersController < ApplicationController
   before_action :find_order, except: [:index, :new, :create]
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @orders = Order.all
+  end
+
+  def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @order }
+    end
   end
 
   def new
