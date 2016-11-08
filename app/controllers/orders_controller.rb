@@ -1,9 +1,13 @@
 class OrdersController < ApplicationController
   before_action :find_order, except: [:index, :new, :create]
+  before_action :set_feature
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @orders = Order.all
+    @orders = @feature.orders
+    # @orders = Order.all
+
+    # render 'orders/index'
   end
 
   def show
@@ -38,5 +42,9 @@ class OrdersController < ApplicationController
 
   def find_order
     @order = Order.find(params[:id])
+  end
+
+  def set_feature
+    @feature = Feature.find(params[:feature_id])
   end
 end
