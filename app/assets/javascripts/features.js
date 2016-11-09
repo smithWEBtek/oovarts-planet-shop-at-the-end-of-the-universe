@@ -66,6 +66,26 @@ $(function() {
     });
 	});
 
+	$(".js-previous").on("click", function() {
+
+		var nextId = parseInt($(".js-next").attr("data-id")) - 1;
+    $.get("/features/" + nextId + ".json", function(feature) {
+      $("#featureName").text(feature["name"].titleize());
+      $("#featureDescription").text(feature["description"]);
+      $("#featureImage").attr("src", "/assets/" + feature["name"].parameterize() + ".jpg");
+
+      console.log(document.getElementById('featureImage').src)
+
+      // re-set the id to current on the link
+      $(".js-next").attr("data-id", feature["id"]);
+
+      // does not show orders if user has not already clicked for it
+	    if($(".show-orders").data('clicked')) {
+		    $(".show-orders").click();
+			}
+    });
+	});
+
 	$("#new_feature").on('submit', function(e) {
 		e.preventDefault();
 
@@ -82,7 +102,7 @@ $(function() {
 
 		var posting = $.post('/features', values);
 
-		posting.done(function(response) {
+		posting.success(function(response) {
 			console.log(response);
 	    $("#features-list ul").append('<li class="list-group-item"><a href="/features/' + response["id"] + '">' + response["name"].titleize() + '</li>');
 		});
