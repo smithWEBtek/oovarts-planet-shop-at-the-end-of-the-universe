@@ -1,6 +1,5 @@
 <div class="jumbotron">
 	<h1>Available Features</h1>
-	
 	<div id="features-list">
 		<ul class="list-group">
 			<% @features.each do |feature| %>
@@ -8,8 +7,13 @@
 			<% end %>
 		</ul>
 	</div>
-
 </div>
+
+<script id="feature-template" type="text/x-handlebars-template">
+	<li class="list-group-item">
+		<a href="/features/{{id}}">{{name}}</a>
+	</li>
+</script>
 
 <div class="jumbotron col-md-6">
 	<h2>Add A Feature</h2>
