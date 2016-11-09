@@ -1,3 +1,16 @@
+function Feature(attributes) {
+	this.id = attributes.id;
+	this.name = attributes.name;
+}
+
+Feature.source = $("#feature-template").html();
+Feature.template = Handlebars.compile(Feature.source);
+
+
+Feature.prototype.renderLi = function() {
+
+}
+
 $(function() {
 
 	var currentId;
@@ -103,7 +116,10 @@ $(function() {
 		var posting = $.post('/features', values);
 
 		posting.success(function(response) {
-			console.log(response);
+			var feature = new Feature(response);
+			var featureLi = feature.renderLi();
+
+			console.log(feature);
 	    $("#features-list ul").append('<li class="list-group-item"><a href="/features/' + response["id"] + '">' + response["name"].titleize() + '</li>');
 		});
 	});
