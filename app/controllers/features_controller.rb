@@ -17,7 +17,7 @@ class FeaturesController < ApplicationController
     @feature = Feature.new(feature_params)
     if !@feature.valid?
       flash[:alert] = "Please make sure you have entered in the correct information."
-      redirect_to new_feature_path
+      # redirect_to features_path
     else
       @feature.save
       render json: @feature, status: 201 
