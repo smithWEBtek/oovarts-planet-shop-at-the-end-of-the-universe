@@ -24,7 +24,7 @@ class FeaturesController < ApplicationController
       redirect_to new_feature_path
     else
       @feature.save
-      redirect_to features_path
+      render json: @feature, status: 201 
     end
   end
 
