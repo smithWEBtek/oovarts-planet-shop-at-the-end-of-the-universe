@@ -23,6 +23,17 @@ function Feature(attributes) {
 	this.name = attributes.name.titleize();
 }
 
+Feature.success = function(response) {
+	var feature = new Feature(response);
+	var featureLi = feature.renderLi();
+	// featureLi through renderLi() is built from handlebars and the Feature object prototype
+  $("#features-list ul").append(featureLi);
+}
+
+Feature.error = function(response) {
+	console.log("Error", response);
+}
+
 $(function() {
 	Feature.source = $("#feature-template").html();
 	Feature.template = Handlebars.compile(Feature.source);
@@ -32,6 +43,8 @@ Feature.prototype.renderLi = function() {
 	// this refers to the object itself that is being pass on to the template
 	return Feature.template(this);
 }
+
+// rest of the code listens to click and submit events
 
 $(function() {
 
@@ -107,18 +120,19 @@ $(function() {
 	$("#new_feature").on('submit', function(e) {
 		e.preventDefault();
 
+	// 	$.ajax({
+	// 		type: "post",
+	// 		url: "/features",
+	// 		data: $(this).serialize();
+	// 		success: function(response) {
+	// 			alert("success")
+	// 		}
+	// 	})
+
 		var values = $(this).serialize();
-
 		var posting = $.post('/features', values);
-
-		posting.success(function(response) {
-			var feature = new Feature(response);
-			var featureLi = feature.renderLi();
-
-			console.log(feature);
-			// featureLi through renderLi() is built from handlebars and the Feature object prototype
-	    $("#features-list ul").append(featureLi);
-		});
+		posting.success(Feature.success)
+		.error(Feature.error)
 	});
 });
 
