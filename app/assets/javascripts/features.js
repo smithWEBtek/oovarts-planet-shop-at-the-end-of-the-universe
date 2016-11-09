@@ -2,6 +2,10 @@ $(function() {
 
 	var currentId;
 
+	String.prototype.parameterize = function () {
+    return this.trim().replace(/[^a-zA-Z0-9-\s]/g, '').replace(/[^a-zA-Z0-9-]/g, '-').toLowerCase();
+	}
+
 	$(".show-orders").on("click", function(e) {
     // prevent response from loading a new page
     // e.preventDefault();
@@ -33,8 +37,12 @@ $(function() {
 
 		var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.get("/features/" + nextId + ".json", function(feature) {
-      $(".featureName").text(feature["name"]);
-      $(".featureDescription").text(feature["description"]);
+      $("#featureName").text(feature["name"]);
+      $("#featureDescription").text(feature["description"]);
+      $("#featureImage").attr("src", "/assets/" + feature["name"].parameterize() + ".jpg");
+
+      console.log(document.getElementById('featureImage').src)
+
       // re-set the id to current on the link
       $(".js-next").attr("data-id", feature["id"]);
 
@@ -45,12 +53,10 @@ $(function() {
     });
 	});
 
-	$("#new_feature").on('submit', function(e) {
+	$("#new-feature").on('submit', function(e) {
 		e.preventDefault();
 
 		var values = $(this).serialize();
-
-		debugger
 
 		var posting = $.post('/features', values);
 
