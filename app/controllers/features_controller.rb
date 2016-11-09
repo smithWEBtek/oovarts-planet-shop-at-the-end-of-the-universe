@@ -12,10 +12,25 @@ class FeaturesController < ApplicationController
     end
   end
 
+  def new
+    @feature = Feature.new
+  end
+
+  def create
+    @feature = Feature.new(feature_params)
+    if !@feature.valid?
+      flash[:alert] = "Please make sure you have entered in the correct information."
+      redirect_to new_feature_path
+    else
+      @feature.save
+      redirect_to features_path
+    end
+  end
+
   private
 
   def feature_params
-    params.require(:feature).permit(:id, :description)
+    params.require(:feature).permit(:id, :name, :description)
   end
 
   def find_feature
