@@ -8,7 +8,8 @@ Specs:
 	- The orders index page is rendered via jQuery and JSON on each feature show page.
 - [x] Include at least one has_many relationship in information rendered via JSON and appended to the DOM.
 	- The orders index page rendered on each feature show page shows a list of orders that belong to the feature, and the associated planets that have many orders.
-- [ ] Include at least one link that loads or updates a resource without reloading the page.
+- [x] Include at least one link that loads or updates a resource without reloading the page.
+	- New feature form posts via AJAX and appends the response data directly to the features index page.
 - [x] Translate JSON responses into js model objects.
 - [ ] At least one of the js model objects must have at least one method added by your code to the prototype.
 
