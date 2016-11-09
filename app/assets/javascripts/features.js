@@ -53,16 +53,25 @@ $(function() {
     });
 	});
 
-	$("#new-feature").on('submit', function(e) {
+	$("#new_feature").on('submit', function(e) {
 		e.preventDefault();
+
+	// 	$.ajax({
+	// 		type: "post",
+	// 		url: "/features",
+	// 		data: $(this).serialize();
+	// 		success: function(response) {
+	// 			alert("success")
+	// 		}
+	// 	})
 
 		var values = $(this).serialize();
 
 		var posting = $.post('/features', values);
 
-		posting.done(function(data) {
-	    var feature = data["post"];
-	    $("#features-list").append(post["title"]);
+		posting.done(function(response) {
+			console.log(response);
+	    $("#features-list ul").append('<li class="list-group-item"><a href="/features/' + response["id"] + '">' + response["name"] + '</li>');
 		});
 	});
 });

@@ -1,13 +1,13 @@
 <div class="jumbotron">
 	<h1>Available Features</h1>
 	
-	<ul id="features-list" class="list-group">
-		<% @features.each do |feature| %>
-			<tr>
-				<li class="list-group-item"><%= link_to feature.name.titleize, feature_path(feature) %></li>
-			</tr>
-		<% end %>
-	</ul>
+	<div id="features-list">
+		<ul class="list-group">
+			<% @features.each do |feature| %>
+					<li class="list-group-item"><%= link_to feature.name.titleize, feature_path(feature) %></li>
+			<% end %>
+		</ul>
+	</div>
 
 </div>
 
@@ -40,7 +40,7 @@
 	    <%= f.text_area :description, :class => "form-control" %>
 		</div>
 	
-		<%= f.submit 'Create New Feature', class: "btn btn-default" %>
+		<%= f.submit 'Create New Feature', class: "btn btn-default submit-btn" %>
 	
 	<% end %>
 </div>
