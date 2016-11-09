@@ -6,6 +6,19 @@ $(function() {
     return this.trim().replace(/[^a-zA-Z0-9-\s]/g, '').replace(/[^a-zA-Z0-9-]/g, '-').toLowerCase();
 	}
 
+	String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+	}
+
+	String.prototype.titleize = function() {
+    var string_array = this.split(' ');
+    string_array = string_array.map(function(str) {
+       return str.capitalize(); 
+    });
+    
+    return string_array.join(' ');
+	}
+
 	$(".show-orders").on("click", function(e) {
     // prevent response from loading a new page
     // e.preventDefault();
@@ -37,7 +50,7 @@ $(function() {
 
 		var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.get("/features/" + nextId + ".json", function(feature) {
-      $("#featureName").text(feature["name"]);
+      $("#featureName").text(feature["name"].titleize());
       $("#featureDescription").text(feature["description"]);
       $("#featureImage").attr("src", "/assets/" + feature["name"].parameterize() + ".jpg");
 
@@ -71,7 +84,7 @@ $(function() {
 
 		posting.done(function(response) {
 			console.log(response);
-	    $("#features-list ul").append('<li class="list-group-item"><a href="/features/' + response["id"] + '">' + response["name"] + '</li>');
+	    $("#features-list ul").append('<li class="list-group-item"><a href="/features/' + response["id"] + '">' + response["name"].titleize() + '</li>');
 		});
 	});
 });
