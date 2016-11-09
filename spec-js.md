@@ -11,10 +11,12 @@ Specs:
 - [x] Include at least one link that loads or updates a resource without reloading the page.
 	- New feature form posts via AJAX and appends the response data directly to the features index page.
 - [x] Translate JSON responses into js model objects.
-- [ ] At least one of the js model objects must have at least one method added by your code to the prototype.
+	- JSON response from new feature form is translated into a Feature object.
+- [x] At least one of the js model objects must have at least one method added by your code to the prototype.
+	- Feature model object has the methods renderLi, success, and error called on the prototype.
 
 Confirm
-- [ ] You have a large number of small Git commits
-- [ ] Your commit messages are meaningful
-- [ ] You made the changes in a commit that relate to the commit message
-- [ ] You don't include changes in a commit that aren't related to the commit message
+- [x] You have a large number of small Git commits
+- [x] Your commit messages are meaningful
+- [x] You made the changes in a commit that relate to the commit message
+- [x] You don't include changes in a commit that aren't related to the commit message
