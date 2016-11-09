@@ -1,3 +1,4 @@
+// functions that convert strings to proper image file names and feature names
 String.prototype.parameterize = function () {
   return this.trim().replace(/[^a-zA-Z0-9-\s]/g, '').replace(/[^a-zA-Z0-9-]/g, '-').toLowerCase();
 }
@@ -14,6 +15,8 @@ String.prototype.titleize = function() {
   
   return string_array.join(' ');
 }
+
+// feature object prototype added to the code through handlebars
 
 function Feature(attributes) {
 	this.id = attributes.id;
@@ -33,8 +36,6 @@ Feature.prototype.renderLi = function() {
 $(function() {
 
 	var currentId;
-
-
 
 	$(".show-orders").on("click", function(e) {
     // prevent response from loading a new page
@@ -106,15 +107,6 @@ $(function() {
 	$("#new_feature").on('submit', function(e) {
 		e.preventDefault();
 
-	// 	$.ajax({
-	// 		type: "post",
-	// 		url: "/features",
-	// 		data: $(this).serialize();
-	// 		success: function(response) {
-	// 			alert("success")
-	// 		}
-	// 	})
-
 		var values = $(this).serialize();
 
 		var posting = $.post('/features', values);
@@ -126,7 +118,6 @@ $(function() {
 			console.log(feature);
 			// featureLi through renderLi() is built from handlebars and the Feature object prototype
 	    $("#features-list ul").append(featureLi);
-	    // $("#features-list ul").append('<li class="list-group-item"><a href="/features/' + response["id"] + '">' + response["name"].titleize() + '</li>');
 		});
 	});
 });
