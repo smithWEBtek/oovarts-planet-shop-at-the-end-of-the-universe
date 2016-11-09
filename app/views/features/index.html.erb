@@ -9,5 +9,41 @@
 		<% end %>
 	</ul>
 
-	<%= link_to '+ Add New Feature', new_feature_path %>
+</div>
+
+<div class="row">
+	<div class="jumbotron col-md-6">
+		<h2>Add A Feature</h2>
+		
+		<%= form_for @feature, :id => "new_feature" do |f| %>
+			<% if @feature.errors.any? %>
+		    <div id="error_explanation">
+		      <h3>
+		        <%= pluralize(@feature.errors.count, "error") %>
+		        prohibited this form from being submitted:
+		      </h3>
+
+		      <ul>
+		      <% @feature.errors.full_messages.each do |msg| %>
+		        <li><%= msg %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+		
+			<div class="form-group">
+				<h3><%= f.label :name %></h3>
+		    <%= f.text_field :name, :class => "form-control" %>
+			</div>
+
+			<div class="form-group">
+				<h3><%= f.label :description %></h3>
+		    <%= f.text_area :description, :class => "form-control" %>
+			</div>
+		
+			<%= f.submit 'Create New Feature', class: "btn btn-default" %>
+		
+		<% end %>
+	</div>
+	
 </div>
