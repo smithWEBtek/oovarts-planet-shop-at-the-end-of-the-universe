@@ -17,16 +17,16 @@ class FeaturesController < ApplicationController
   #   @feature = Feature.new
   # end
 
-  # def create
-  #   @feature = Feature.new(feature_params)
-  #   if !@feature.valid?
-  #     flash[:alert] = "Please make sure you have entered in the correct information."
-  #     redirect_to new_feature_path
-  #   else
-  #     @feature.save
-  #     redirect_to features_path
-  #   end
-  # end
+  def create
+    @feature = Feature.new(feature_params)
+    if !@feature.valid?
+      flash[:alert] = "Please make sure you have entered in the correct information."
+      redirect_to new_feature_path
+    else
+      @feature.save
+      redirect_to features_path
+    end
+  end
 
   private
 

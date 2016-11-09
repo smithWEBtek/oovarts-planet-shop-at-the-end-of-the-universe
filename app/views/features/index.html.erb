@@ -1,7 +1,7 @@
 <div class="jumbotron">
 	<h1>Available Features</h1>
 	
-	<ul class="list-group">
+	<ul id="features-list" class="list-group">
 		<% @features.each do |feature| %>
 			<tr>
 				<li class="list-group-item"><%= link_to feature.name.titleize, feature_path(feature) %></li>

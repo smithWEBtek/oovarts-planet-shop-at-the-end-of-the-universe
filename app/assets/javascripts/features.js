@@ -48,15 +48,15 @@ $(function() {
 	$("#new_feature").on('submit', function(e) {
 		e.preventDefault();
 
-		debugger
 		var values = $(this).serialize();
+
+		debugger
 
 		var posting = $.post('/features', values);
 
 		posting.done(function(data) {
-	    var post = data["post"];
-	    $("#postTitle").text(post["title"]);
-	    $("#postBody").text(post["description"]);
+	    var feature = data["post"];
+	    $("#features-list").append(post["title"]);
 		});
 	});
 });
