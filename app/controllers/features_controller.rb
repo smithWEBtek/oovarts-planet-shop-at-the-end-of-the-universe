@@ -13,10 +13,6 @@ class FeaturesController < ApplicationController
     end
   end
 
-  # def new
-  #   @feature = Feature.new
-  # end
-
   def create
     @feature = Feature.new(feature_params)
     if !@feature.valid?
