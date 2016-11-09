@@ -21,7 +21,7 @@ $(function() {
 
 	$(".show-orders").on("click", function(e) {
     // prevent response from loading a new page
-    // e.preventDefault();
+    e.preventDefault();
 
     $(this).data('clicked', true);
 
