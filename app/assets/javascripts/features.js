@@ -1,36 +1,40 @@
-function Feature(attributes) {
-	this.id = attributes.id;
-	this.name = attributes.name;
+String.prototype.parameterize = function () {
+  return this.trim().replace(/[^a-zA-Z0-9-\s]/g, '').replace(/[^a-zA-Z0-9-]/g, '-').toLowerCase();
 }
 
-Feature.source = $("#feature-template").html();
-Feature.template = Handlebars.compile(Feature.source);
+String.prototype.capitalize = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+}
 
+String.prototype.titleize = function() {
+  var string_array = this.split(' ');
+  string_array = string_array.map(function(str) {
+     return str.capitalize(); 
+  });
+  
+  return string_array.join(' ');
+}
+
+function Feature(attributes) {
+	this.id = attributes.id;
+	this.name = attributes.name.titleize();
+}
+
+$(function() {
+	Feature.source = $("#feature-template").html();
+	Feature.template = Handlebars.compile(Feature.source);
+});
 
 Feature.prototype.renderLi = function() {
-
+	// this refers to the object itself that is being pass on to the template
+	return Feature.template(this);
 }
 
 $(function() {
 
 	var currentId;
 
-	String.prototype.parameterize = function () {
-    return this.trim().replace(/[^a-zA-Z0-9-\s]/g, '').replace(/[^a-zA-Z0-9-]/g, '-').toLowerCase();
-	}
 
-	String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-	}
-
-	String.prototype.titleize = function() {
-    var string_array = this.split(' ');
-    string_array = string_array.map(function(str) {
-       return str.capitalize(); 
-    });
-    
-    return string_array.join(' ');
-	}
 
 	$(".show-orders").on("click", function(e) {
     // prevent response from loading a new page
@@ -120,7 +124,9 @@ $(function() {
 			var featureLi = feature.renderLi();
 
 			console.log(feature);
-	    $("#features-list ul").append('<li class="list-group-item"><a href="/features/' + response["id"] + '">' + response["name"].titleize() + '</li>');
+			// featureLi through renderLi() is built from handlebars and the Feature object prototype
+	    $("#features-list ul").append(featureLi);
+	    // $("#features-list ul").append('<li class="list-group-item"><a href="/features/' + response["id"] + '">' + response["name"].titleize() + '</li>');
 		});
 	});
 });
