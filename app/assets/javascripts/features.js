@@ -16,39 +16,10 @@ String.prototype.titleize = function() {
   return string_array.join(' ');
 }
 
-// feature object prototype added to the code through handlebars
-
-function Feature(attributes) {
-	this.id = attributes.id;
-	this.name = attributes.name.titleize();
-}
-
-Feature.success = function(response) {
-	var feature = new Feature(response);
-	var featureLi = feature.renderLi();
-	// featureLi through renderLi() is built from handlebars and the Feature object prototype
-  $("#features-list ul").append(featureLi);
-}
-
-Feature.error = function(response) {
-	console.log("Error", response);
-}
+// click events on feature show page
 
 $(function() {
-	Feature.source = $("#feature-template").html();
-	Feature.template = Handlebars.compile(Feature.source);
-});
-
-Feature.prototype.renderLi = function() {
-	// this refers to the object itself that is being pass on to the template
-	return Feature.template(this);
-}
-
-// rest of the code listens to click and submit events
-
-$(function() {
-
-	var currentId;
+		var currentId;
 
 	$(".show-orders").on("click", function(e) {
     // prevent response from loading a new page
@@ -116,6 +87,39 @@ $(function() {
 			}
     });
 	});
+});
+
+// feature object prototype added to the code through handlebars
+
+function Feature(attributes) {
+	this.id = attributes.id;
+	this.name = attributes.name.titleize();
+}
+
+Feature.success = function(response) {
+	var feature = new Feature(response);
+	var featureLi = feature.renderLi();
+	// featureLi through renderLi() is built from handlebars and the Feature object prototype
+  $("#features-list ul").append(featureLi);
+}
+
+Feature.error = function(response) {
+	console.log("Error", response);
+}
+
+$(function() {
+	Feature.source = $("#feature-template").html();
+	Feature.template = Handlebars.compile(Feature.source);
+});
+
+Feature.prototype.renderLi = function() {
+	// this refers to the object itself that is being pass on to the template
+	return Feature.template(this);
+}
+
+// new feature form submit events
+
+$(function() {
 
 	$("#new_feature").on('submit', function(e) {
 		e.preventDefault();
