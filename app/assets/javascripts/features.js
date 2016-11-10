@@ -19,7 +19,7 @@ String.prototype.titleize = function() {
 // click events on feature show page
 
 $(function() {
-		var currentId;
+	var currentId;
 
 	$(".show-orders").on("click", function(e) {
     // prevent response from loading a new page
@@ -56,8 +56,6 @@ $(function() {
       $("#featureDescription").text(feature["description"]);
       $("#featureImage").attr("src", "/assets/" + feature["name"].parameterize() + ".jpg");
 
-      console.log(document.getElementById('featureImage').src)
-
       // re-set the id to current on the link
       $(".js-next").attr("data-id", feature["id"]);
 
@@ -75,8 +73,6 @@ $(function() {
       $("#featureName").text(feature["name"].titleize());
       $("#featureDescription").text(feature["description"]);
       $("#featureImage").attr("src", "/assets/" + feature["name"].parameterize() + ".jpg");
-
-      console.log(document.getElementById('featureImage').src)
 
       // re-set the id to current on the link
       $(".js-next").attr("data-id", feature["id"]);
